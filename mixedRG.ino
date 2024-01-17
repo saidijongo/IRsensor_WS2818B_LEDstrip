@@ -1,8 +1,8 @@
 #include <FastLED.h>
 
 #define LED_PIN 11
-#define IR_PIN 12
-#define NUM_LEDS 32
+#define IR_PIN 13
+#define NUM_LEDS 50
 
 CRGB leds[NUM_LEDS];
 
@@ -28,7 +28,8 @@ void blinkLEDs() {
   delay(500);
 }
 
-void loop() {  
+voi
+d loop() {  
   // Check if IR sensor is interrupted
   if (digitalRead(IR_PIN) == LOW) {
     unsigned long startTime = millis();
