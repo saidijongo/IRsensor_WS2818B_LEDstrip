@@ -2,12 +2,12 @@
 
 #define LED_PIN 11
 #define IR_PIN 13
-#define NUM_LEDS 50
+#define NUM_LEDS 32
 
 CRGB leds[NUM_LEDS];
 
 void setup() {
-  Serial.begin(900);
+  Serial.begin(115200);
   FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, NUM_LEDS);
   pinMode(IR_PIN, INPUT);
 }
@@ -33,7 +33,7 @@ d loop() {
   // Check if IR sensor is interrupted
   if (digitalRead(IR_PIN) == LOW) {
     unsigned long startTime = millis();
-    while (millis() - startTime < 1000) { 
+    while (millis() - startTime < 5000) { 
       blinkLEDs();
       delay(50);
     }
