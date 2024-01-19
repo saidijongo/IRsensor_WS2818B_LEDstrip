@@ -21,7 +21,8 @@ void setup() {
 
 
 void blinkLEDs() {
-  const int blinkDuration = 10000;  // 10 seconds
+  //const int blinkDuration = 10000;  // 10 seconds
+  const int blinkDuration = 5000;
   const int blinkInterval = 500;   // 500 milliseconds (0.5 seconds)
   unsigned long startTime = millis();
   while (millis() - startTime < blinkDuration) {
@@ -72,6 +73,6 @@ void runStepper(int angle, int speed) {
 
 
 void loop() {
-  runStepper(10, 1000); 
+  runStepper(-40, 1000); 
   delay(1000);
 }
