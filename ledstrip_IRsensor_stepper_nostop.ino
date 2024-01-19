@@ -6,9 +6,9 @@
 #define LED_PIN 11     // LED strip
 #define NUM_LEDS 32    // Number of LEDs
 
-CRGB leds[NUM_LEDS];   // Declare the leds array
+CRGB leds[NUM_LEDS]; 
 
-const int stepsPerRev = 500;  // Adjust this based on your motor specifications
+const int stepsPerRev = 6400;
 
 
 void setup() {
@@ -55,23 +55,23 @@ void runStepper(int angle, int speed) {
       // IR sensor interrupted, stop the stepper motor
       digitalWrite(PULL_PIN, LOW);
 
-      // Blink the LED strip for 10 seconds
+      // Blink the LED strip for 20 seconds
       blinkLEDs();
 
       // Turn off the LED strip
       fill_solid(leds, NUM_LEDS, CRGB::Black);
       FastLED.show();
-      return; 
+      return;  // Exit the function
     }
   }
 
   // Turn off the stepper motor after completing the rotation
   digitalWrite(PULL_PIN, LOW);
-  delay(1000);
+  //delay(1000);
 }
 
 
 void loop() {
-  runStepper(30, 1000); 
+  runStepper(10, 1000); 
   delay(1000);
 }
