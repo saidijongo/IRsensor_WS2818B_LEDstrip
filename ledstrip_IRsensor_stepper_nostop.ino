@@ -3,12 +3,12 @@
 #define PULL_PIN 46    // PULL
 #define DIR_PIN 45     // Direction
 #define IR_PIN 13      // IR sensor
-#define LED_PIN 11     // LED strip
-#define NUM_LEDS 32    // Number of LEDs
+#define LED_PIN 11   
+#define NUM_LEDS 32  
 
 CRGB leds[NUM_LEDS]; 
 
-const int stepsPerRev = 6400;
+const int stepsPerRev =5000; // 6400;
 
 
 void setup() {
