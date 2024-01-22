@@ -45,9 +45,9 @@ void runStepper(int angle, int speed) {
   int i = 0;
   while (i < step_target_position && digitalRead(IR_PIN) == HIGH) {
     digitalWrite(PULL_PIN, HIGH);  // Pulse the motor step
-    delayMicroseconds(500);
+    delayMicroseconds(speed);
     digitalWrite(PULL_PIN, LOW);
-    delayMicroseconds(500);
+    delayMicroseconds(speed);
 
     i++; // Increment step count
   }
@@ -55,8 +55,8 @@ void runStepper(int angle, int speed) {
   // Turn off the stepper motor after completing the rotation
   digitalWrite(PULL_PIN, LOW);
 
-  // Check if the IR sensor is interrupted
-  if (digitalRead(IR_PIN) == LOW) {
+  // Check if the IR sensor is interrupted or the desired angle is reached
+  if (digitalRead(IR_PIN) == LOW || i < step_target_position) {
     // Blink the LED strip for 5 seconds
     blinkLEDs();
 
