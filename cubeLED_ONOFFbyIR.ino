@@ -1,12 +1,11 @@
-
 #include <FastLED.h>
 
-#define NUM_LEDS_CUBE 15
+#define NUM_LEDS_CUBE 50
 #define IR_PIN 13
 #define LED_PIN_CUBE 11
 
 CRGB ledscube[NUM_LEDS_CUBE];
-bool ledStripState = false; // Initial state is OFF
+bool ledStripState = false; // Initially OFF
 unsigned long irSensorTimer = 0;
 
 void setup() {
@@ -20,7 +19,7 @@ void movingRainbowEffect() {
   static uint8_t hue = 0;
 
   // Fill the LED strip with a moving rainbow gradient
-  fill_rainbow(ledscube, NUM_LEDS_CUBE, hue, 10);
+  fill_rainbow(ledscube, NUM_LEDS_CUBE, hue, 1);
 
   // Move the rainbow effect from left to right
   for (int i = 0; i < NUM_LEDS_CUBE; i++) {
@@ -37,6 +36,8 @@ void movingRainbowEffect() {
   if (startIndex >= NUM_LEDS_CUBE) {
     startIndex = 0;
   }
+  // Introduce a delay to control the speed
+  delay(500);
 }
 
 void toggleLEDState() {
@@ -52,7 +53,7 @@ void toggleLEDState() {
     sensorInterruptedTime = millis();
     lastIrState = currentIrState;
   }
- 
+
   // Check if the sensor has been interrupted for more than 10 seconds
   if (currentIrState == LOW && millis() - sensorInterruptedTime >= 10000) {
     // Toggle LED strip state
